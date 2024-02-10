@@ -33,7 +33,7 @@ const loggerPath = path.join(__dirname, 'logs/server.log');
 if (fs.existsSync(loggerPath)) {
   fs.unlinkSync(loggerPath);
 }
-const serverLogStream = rfs.createStream('server.log', { interval: '1d', path: path.join(__dirname, 'logs') });
+const serverLogStream = rfs.createStream('server.log', { maxFiles: 5, size: '2M', interval: '1d', path: path.join(__dirname, 'logs') });
 app.use(logger('combined'));
 app.use(logger('combined', { stream: serverLogStream }));
 
