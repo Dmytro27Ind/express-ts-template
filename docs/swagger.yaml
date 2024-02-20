@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
-  title: Cloud Guard API
+  title: Express TS Template API
   version: 1.0.0
   description: >-
-    The Cloud Guard server that provide API for the client. Made with NodeJS,
+    The Express TS Template server that provide API for the client. Made with NodeJS,
     Express and Swagger.
 servers:
   - url: http://localhost:3001/api
