@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { ListObjectsCommand, CreateBucketCommand } from "@aws-sdk/client-s3";
 import { StatusCodes } from 'http-status-codes';
-import s3Client from '../aws/s3Client.ts';
-import MissingParameter from "../errors/MissingParameter.ts";
+import s3Client from '../aws/s3Client';
+import MissingParameter from "../errors/MissingParameter";
 
 const S3Service = {
   createBucket: async function(req: Request, res: Response, next: NextFunction) {

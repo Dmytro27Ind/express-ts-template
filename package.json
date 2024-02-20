@@ -1,24 +1,25 @@
 {
-  "name": "cloud-guard-server",
+  "name": "express-ts-template",
   "version": "1.0.0",
-  "description": "The Cloud Guard server that provide API for the client. Made with NodeJS, Express and Swagger.",
+  "description": "The Express TypeScript template.",
   "type": "module",
   "main": "app.ts",
   "scripts": {
-    "prod": "cross-env NODE_ENV=production ts-node --esm ./app.ts",
-    "start": "ts-node --esm ./app.ts",
-    "dev": "nodemon --esm ./app.ts"
+    "build": "rimraf dist && tsc && cpy public dist",
+    "prod": "cross-env NODE_ENV=production node --experimental-specifier-resolution=node ./dist/app.js",
+    "start": "node --experimental-specifier-resolution=node ./dist/app.js",
+    "dev": "nodemon --esm --experimentalSpecifierResolution node ./app.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Secure-Cloud-Guard/cloud-guard-server"
+    "url": "git+https://github.com/Dmytro27Ind/express-ts-template"
   },
   "author": "Dmytro Kagirov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Secure-Cloud-Guard/cloud-guard-server/issues"
+    "url": "https://github.com/Dmytro27Ind/express-ts-template/issues"
   },
-  "homepage": "https://github.com/Secure-Cloud-Guard/cloud-guard-server#readme",
+  "homepage": "https://github.com/Dmytro27Ind/express-ts-template#readme",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.509.0",
     "cors": "^2.8.5",
@@ -41,8 +42,11 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.11.17",
     "@types/swagger-ui-express": "^4.1.6",
+    "cpy": "^11.0.0",
+    "cpy-cli": "^5.0.0",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.22",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }

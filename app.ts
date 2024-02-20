@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import path from 'path';
 import fs from 'fs';
 import YAML from 'yaml';
@@ -9,8 +9,8 @@ import helmet from "helmet";
 import logger from 'morgan';
 import rfs from 'rotating-file-stream';
 import swaggerUi from 'swagger-ui-express';
-import { errorHandler, notFound } from "./middlewares/error.ts";
-import { S3Router } from './routes/s3.ts';
+import { errorHandler, notFound } from "./middlewares/error";
+import { S3Router } from './routes/s3';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -49,6 +49,16 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/', (req: Request, res: Response) => {
   res.sendFile(__dirname + '/public/index.html');
 })
+
+app.post('/robot/state', async function(req: Request, res: Response, next: NextFunction) {
+  try {
+    console.log('req.body: ', req.body);
+    res.json(true);
+
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.use('/api/s3', S3Router)
 
