@@ -50,16 +50,6 @@ app.get('/', (req: Request, res: Response) => {
   res.sendFile(__dirname + '/public/index.html');
 })
 
-app.post('/robot/state', async function(req: Request, res: Response, next: NextFunction) {
-  try {
-    console.log('req.body: ', req.body);
-    res.json(true);
-
-  } catch (error) {
-    next(error);
-  }
-});
-
 app.use('/api/s3', S3Router)
 
 // error middlewares
